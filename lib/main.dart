@@ -4,13 +4,13 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:kakao_map_plugin/kakao_map_plugin.dart';
+import 'package:real_only/model/only_user.dart';
 import 'package:real_only/notification.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:real_only/main_page.dart';
+import 'package:real_only/view/main_page.dart';
 
 import 'color_schemes.g.dart';
-import 'login_page.dart';
+import 'view/login_page.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +24,7 @@ void main() async {
 
   AuthRepository.initialize(appKey: '8d446c2509c713f22afd3ba5062b0ff4');
 
-  bool isLogin = await checkLoginState();
+  bool isLogin = await OnlyUser().checkLoginState();
 
   FlutterNativeSplash.remove();
 
@@ -58,7 +58,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      title: 'Flutter Demo',
+      title: '',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,
@@ -68,10 +68,4 @@ class _MyAppState extends State<MyApp> {
       home: widget.isLogin ? const MainPage() : LoginPage(),
     );
   }
-}
-
-checkLoginState() async {
-  final SharedPreferences prefs = await SharedPreferences.getInstance();
-  final int? id = prefs.getInt('id');
-  return id != null;
 }

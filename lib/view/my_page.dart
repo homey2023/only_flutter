@@ -3,8 +3,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kakao_map_plugin/kakao_map_plugin.dart';
-import 'package:real_only/login_page.dart';
-import 'package:real_only/result_page.dart';
+import 'package:real_only/view/login_page.dart';
+import 'package:real_only/view/result_page.dart';
 import 'package:real_only/user_pref.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:http/http.dart' as http;
@@ -70,8 +70,6 @@ class _MyPageState extends State<MyPage> {
 
   @override
   Widget build(BuildContext context) {
-    final deviceWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -103,38 +101,26 @@ class _MyPageState extends State<MyPage> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            infoList![i]['confirm']
-                                ? Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color:
-                                          Theme.of(context).colorScheme.primary,
-                                    ),
-                                    child: const Text(
-                                      '확인 완료',
-                                      style: TextStyle(
-                                          color: Colors.white,
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12),
-                                    ),
-                                  )
-                                : Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 8, vertical: 4),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color:
-                                          Theme.of(context).colorScheme.outline,
-                                    ),
-                                    child: const Text(
-                                      '확인 전',
-                                      style: TextStyle(
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 12),
-                                    ),
-                                  ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 8, vertical: 4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: infoList![i]['confirm']
+                                    ? Theme.of(context).colorScheme.primary
+                                    : Theme.of(context).colorScheme.outline,
+                              ),
+                              child: Text(
+                                infoList![i]['confirm'] ? '확인 완료' : '확인 전',
+                                style: TextStyle(
+                                  color: infoList![i]['confirm']
+                                      ? Colors.white
+                                      : null,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 12,
+                                ),
+                              ),
+                            ),
                             const SizedBox(height: 10),
                             Row(
                               children: [
@@ -186,12 +172,9 @@ class _MyPageState extends State<MyPage> {
                                 child: KakaoMap(
                                   currentLevel: 5,
                                   onMapCreated: ((controller) {
-                                    late KakaoMapController mapController;
-
-                                    mapController = controller;
                                     setState(() {
                                       markers.add(Marker(
-                                          markerId: 'home',
+                                          markerId: i.toString(),
                                           latLng: LatLng(
                                               infoList![i]['coords'][0],
                                               infoList![i]['coords'][1]),
@@ -202,6 +185,7 @@ class _MyPageState extends State<MyPage> {
                                               'https://ifh.cc/g/AsC2fl.png'));
                                     });
                                   }),
+                                  
                                   markers: markers.toList(),
                                   center: LatLng(infoList![i]['coords'][0],
                                       infoList![i]['coords'][1]),

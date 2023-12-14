@@ -53,7 +53,6 @@ class _ResultPageState extends State<ResultPage> {
         throw Exception('실패');
       }
 
-      print('결과 : ${jsonDecode(utf8.decode(response.bodyBytes))}');
 
       setState(() {
         infoList = jsonDecode(utf8.decode(response.bodyBytes));

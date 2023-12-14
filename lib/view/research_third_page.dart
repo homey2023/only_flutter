@@ -1,13 +1,10 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:get/get.dart';
 import 'package:kakao_flutter_sdk_user/kakao_flutter_sdk_user.dart';
 import 'package:http/http.dart' as http;
-import 'package:real_only/research_finish_page.dart';
-
-import 'notification.dart';
+import 'package:real_only/view/research_finish_page.dart';
 
 enum Standard {
   a('a', '안전'),
@@ -83,13 +80,13 @@ class _ResearchThirdPageState extends State<ResearchThirdPage> {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               const SizedBox(height: 16),
-              Image.asset('assets/3-0.png'),
+              Image.asset('assets/research/3-0.png'),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
                     const SizedBox(height: 16),
-                    Image.asset('assets/3-1.png'),
+                    Image.asset('assets/research/3-1.png'),
                     const SizedBox(height: 8),
                     Wrap(
                       spacing: 3.0,
@@ -116,7 +113,7 @@ class _ResearchThirdPageState extends State<ResearchThirdPage> {
                       }).toList(),
                     ),
                     const SizedBox(height: 16),
-                    Image.asset('assets/3-2.png'),
+                    Image.asset('assets/research/3-2.png'),
                     const SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
@@ -270,7 +267,7 @@ class _ResearchThirdPageState extends State<ResearchThirdPage> {
                       ),
                     ),
                     const SizedBox(height: 20),
-                    Image.asset('assets/3-3.png'),
+                    Image.asset('assets/research/3-3.png'),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Wrap(
@@ -298,7 +295,7 @@ class _ResearchThirdPageState extends State<ResearchThirdPage> {
                       ),
                     ),
                     const SizedBox(height: 16),
-                    Image.asset('assets/3-4.png'),
+                    Image.asset('assets/research/3-4.png'),
                     const SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 32.0),

@@ -3,12 +3,11 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:real_only/my_page.dart';
-import 'package:real_only/notification_page.dart';
-import 'package:real_only/research_first_page.dart';
+import 'package:real_only/view/my_page.dart';
+import 'package:real_only/view/notification_page.dart';
+import 'package:real_only/view/research_first_page.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:http/http.dart' as http;
-import 'package:real_only/test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -22,7 +21,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   final formKey = GlobalKey<FormState>();
   String ask = '';
-  final String _url =
+  final String url =
       'https://instagram.com/onlyteam2023?igshid=NTc4MTIwNjQ2YQ==';
 
   @override
@@ -82,7 +81,7 @@ class _MainPageState extends State<MainPage> {
                 padding: const EdgeInsets.all(16.0),
                 child: GestureDetector(
                   onTap: () async {
-                    await launchUrl(Uri.parse(_url),
+                    await launchUrl(Uri.parse(url),
                         mode: LaunchMode.externalApplication);
                   },
                   child: Container(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:group_radio_button/group_radio_button.dart';
-import 'package:real_only/research_third_page.dart';
+import 'package:real_only/view/research_third_page.dart';
 
 class ResearchSecondPage extends StatefulWidget {
   const ResearchSecondPage({super.key});
@@ -14,7 +14,7 @@ class _ResearchSecondPageState extends State<ResearchSecondPage> {
   final formKey = GlobalKey<FormState>();
 
   final List<String> imageUrls =
-      List.generate(7, (index) => 'assets/2-${index + 2}.png');
+      List.generate(7, (index) => 'assets/research/2-${index + 2}.png');
 
   List radioValues = List.generate(7, (index) => '');
 
@@ -37,12 +37,12 @@ class _ResearchSecondPageState extends State<ResearchSecondPage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Image.asset('assets/2-0.png'),
+                child: Image.asset('assets/research/2-0.png'),
               ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Image.asset('assets/2-1.png'),
+                child: Image.asset('assets/research/2-1.png'),
               ),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 32.0),
@@ -60,7 +60,7 @@ class _ResearchSecondPageState extends State<ResearchSecondPage> {
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                child: Image.asset('assets/2-1-2.png'),
+                child: Image.asset('assets/research/2-1-2.png'),
               ),
               const SizedBox(height: 8),
               Padding(
@@ -116,7 +116,7 @@ class _ResearchSecondPageState extends State<ResearchSecondPage> {
                           groupValue: radioValues[index],
                           onChanged: (String? value) {
                             setState(() {
-                              radioValues![index] = value ?? 'F';
+                              radioValues[index] = value ?? 'F';
                             });
                           },
                         ),

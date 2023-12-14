@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:kpostal/kpostal.dart';
-import 'package:real_only/research_second_page.dart';
+import 'package:real_only/view/research_second_page.dart';
 
 enum ExerciseFilter {
   doorlock('doorlock', '도어락'),
@@ -49,7 +49,7 @@ class _ResearchFirstPageState extends State<ResearchFirstPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              Image.asset('assets/1-0.png'),
+              Image.asset('assets/research/1-0.png'),
               const SizedBox(height: 16),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -60,7 +60,8 @@ class _ResearchFirstPageState extends State<ResearchFirstPage> {
                     const SizedBox(height: 16),
                     GestureDetector(
                       onTap: _selectAddress,
-                      child: Image.asset('assets/research_2.png', width: 400),
+                      child: Image.asset('assets/research/research_2.png',
+                          width: 400),
                     ),
                     const SizedBox(height: 16),
                     if (address.isNotEmpty)
